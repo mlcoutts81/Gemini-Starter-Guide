@@ -15,6 +15,7 @@
             --gemini-light-bg: #f8f9fa;
             --text-dark: #202124;
             --text-light: #5f6368;
+            --yt-red: #ff0000;
             --sidebar-width: 280px;
             --card-shadow: 0 1px 3px rgba(60,64,67,0.3), 0 4px 8px rgba(60,64,67,0.15);
         }
@@ -52,7 +53,8 @@
             gap: 12px;
         }
 
-        .logo-container img {
+        .gemini-star {
+            width: 32px;
             height: 32px;
         }
 
@@ -93,6 +95,39 @@
         .nav-item i {
             width: 20px;
             text-align: center;
+        }
+
+        /* Persistent Links Section */
+        .quick-links {
+            padding: 20px 24px;
+            border-top: 1px solid #dadce0;
+            background: #fff;
+        }
+
+        .quick-links h4 {
+            font-family: 'Google Sans';
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .external-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--gemini-blue);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .external-link:hover {
+            text-decoration: underline;
+            opacity: 0.8;
         }
 
         /* Main Content Area */
@@ -142,7 +177,7 @@
         /* Content Components */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
             margin-top: 32px;
         }
@@ -153,19 +188,77 @@
             border-radius: 12px;
             padding: 24px;
             transition: box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
         }
 
         .card:hover { box-shadow: var(--card-shadow); }
 
-        .card i {
-            font-size: 24px;
+        .card h3 { margin-bottom: 12px; font-family: 'Google Sans'; font-size: 20px; }
+
+        .tool-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #e8f0fe;
             color: var(--gemini-blue);
-            margin-bottom: 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            align-self: flex-start;
         }
 
-        .card h3 { margin-bottom: 12px; font-family: 'Google Sans'; }
+        .video-btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding-top: 16px;
+        }
 
-        /* Interactive Example Box */
+        .yt-btn {
+            background: #fff;
+            color: var(--yt-red);
+            border: 1px solid var(--yt-red);
+            padding: 6px 12px;
+            border-radius: 18px;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .yt-btn:hover {
+            background: var(--yt-red);
+            color: white;
+        }
+
+        /* Prompt Blocks */
+        .toolkit-prompt {
+            background: #f1f3f4;
+            color: #3c4043;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 13px;
+            margin-top: 16px;
+            border-left: 4px solid var(--gemini-purple);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .copy-hint {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            font-size: 10px;
+            color: var(--text-light);
+            font-family: 'Roboto';
+        }
+
         .example-box {
             background: #202124;
             color: #e8eaed;
@@ -188,7 +281,6 @@
             font-size: 12px;
         }
 
-        /* Cheat Sheet Generator */
         .generator-container {
             background: var(--gemini-light-bg);
             border-radius: 16px;
@@ -237,6 +329,8 @@
             font-weight: 500;
             cursor: pointer;
             font-family: 'Google Sans';
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-outline {
@@ -249,20 +343,21 @@
             cursor: pointer;
         }
 
-        /* Print Style */
         @media print {
-            #sidebar, .btn-primary, .chip-container, .nav-menu { display: none !important; }
+            #sidebar, .btn-primary, .chip-container, .nav-menu, .video-btn-group { display: none !important; }
             #main-content { padding: 0; }
             #infographic-preview { display: block !important; box-shadow: none; border: 1px solid #eee; }
         }
 
-        /* Mobile Styles */
         @media (max-width: 768px) {
             body { flex-direction: column; }
             #sidebar { width: 100%; height: auto; padding: 12px; border-right: none; border-bottom: 1px solid #dadce0; }
             .nav-menu { display: flex; overflow-x: auto; padding-bottom: 8px; }
             .nav-item { margin: 0 4px; white-space: nowrap; }
             .hero-banner { flex-direction: column; text-align: center; }
+            .quick-links { display: flex; gap: 20px; overflow-x: auto; }
+            .quick-links h4 { display: none; }
+            .external-link { margin-bottom: 0; white-space: nowrap; }
         }
     </style>
 </head>
@@ -270,13 +365,13 @@
 
     <nav id="sidebar">
         <div class="logo-container">
-            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M37.5 20C37.5 29.665 29.665 37.5 20 37.5C10.335 37.5 2.5 29.665 2.5 20C2.5 10.335 10.335 2.5 20 2.5C29.665 2.5 37.5 10.335 37.5 20Z" fill="white"/>
-                <path d="M20 5C20 13.2843 13.2843 20 5 20C13.2843 20 20 26.7157 20 35C20 26.7157 26.7157 20 35 20C26.7157 20 20 13.2843 20 5Z" fill="url(#paint0_linear)"/>
+            <svg class="gemini-star" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 0C20 0 20 16.5 40 20C20 23.5 20 40 20 40C20 40 20 23.5 0 20C20 16.5 20 0 20 0Z" fill="url(#gemini_grad)"/>
                 <defs>
-                    <linearGradient id="paint0_linear" x1="5" y1="5" x2="35" y2="35" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#4285F4"/>
-                        <stop offset="1" stop-color="#9B72F3"/>
+                    <linearGradient id="gemini_grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#FF512F"/>
+                        <stop offset="0.5" stop-color="#8E75FF"/>
+                        <stop offset="1" stop-color="#34A853"/>
                     </linearGradient>
                 </defs>
             </svg>
@@ -285,6 +380,9 @@
         <ul class="nav-menu">
             <li class="nav-item active" onclick="showSection('home')">
                 <i class="fa-solid fa-house"></i> Overview
+            </li>
+            <li class="nav-item" onclick="showSection('toolkit')">
+                <i class="fa-solid fa-toolbox"></i> Gemini Toolkit
             </li>
             <li class="nav-item" onclick="showSection('prompting')">
                 <i class="fa-solid fa-terminal"></i> Master Prompting
@@ -299,8 +397,22 @@
                 <i class="fa-solid fa-file-arrow-down"></i> Cheat Sheet Gen
             </li>
         </ul>
-        <div style="padding: 24px; font-size: 12px; color: var(--text-light);">
-            Resource for Scottish Educators<br>EdTech Coach Edition v2.0
+
+        <div class="quick-links">
+            <h4>Quick Links</h4>
+            <a href="https://glow.rmunify.com" target="_blank" class="external-link">
+                <i class="fa-solid fa-graduation-cap"></i> Launch Glow
+            </a>
+            <a href="https://gemini.google.com" target="_blank" class="external-link">
+                <i class="fa-solid fa-sparkles"></i> Open Gemini
+            </a>
+            <a href="https://educertifications.google" target="_blank" class="external-link">
+                <i class="fa-solid fa-certificate"></i> Get Certified
+            </a>
+        </div>
+
+        <div style="padding: 16px 24px; font-size: 11px; color: var(--text-light);">
+            Resource for Scottish Educators<br>EdTech Coach Edition v2.4
         </div>
     </nav>
 
@@ -313,25 +425,97 @@
                     <h2>AI for Educators</h2>
                     <p>Unlock more time for teaching. Gemini is your creative partner for lesson planning, administration, and personalized learning supports.</p>
                 </div>
-                <img src="https://www.gstatic.com/lamda/images/gemini_sparkle_v2.svg" style="width: 150px;" alt="Gemini Sparkle">
+                <svg width="150" height="150" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 0C20 0 20 16.5 40 20C20 23.5 20 40 20 40C20 40 20 23.5 0 20C20 16.5 20 0 20 0Z" fill="url(#hero_gemini_grad)"/>
+                    <defs>
+                        <linearGradient id="hero_gemini_grad" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#FF512F"/>
+                            <stop offset="0.4" stop-color="#4285F4"/>
+                            <stop offset="0.7" stop-color="#9B72F3"/>
+                            <stop offset="1" stop-color="#34A853"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+
+            <div class="card" style="margin-bottom: 40px; border: 1px solid #e8f0fe; background-color: #f1f8ff;">
+                <h3 style="color: var(--gemini-blue);"><i class="fa-solid fa-award"></i> Professional Development</h3>
+                <p>Ready to validate your skills? Become a <strong>Gemini Certified Educator</strong> to master AI integration in your classroom.</p>
+                <a href="https://educertifications.google" target="_blank" class="btn-primary" style="margin-top: 15px;">Explore Certification</a>
             </div>
 
             <h2>Why Gemini?</h2>
             <div class="grid-container">
                 <div class="card">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    <h3>Save Time</h3>
-                    <p>Summarize transcripts, draft parent newsletters, and generate quiz banks in seconds.</p>
+                    <i class="fa-solid fa-bolt" style="color:#fbbc04;"></i>
+                    <h3>Nano Banana Speed</h3>
+                    <p>Powered by Gemini 2.5 Flash, get near-instant responses for routine admin and feedback tasks.</p>
                 </div>
                 <div class="card">
-                    <i class="fa-solid fa-arrows-split-up-and-left"></i>
-                    <h3>Differentiate</h3>
-                    <p>Instantly rewrite any text for different reading levels or create scaffolded guides for students.</p>
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <h3>Deep Research</h3>
+                    <p>Autonomously browse the live web to gather, verify, and organize complex academic information.</p>
                 </div>
                 <div class="card">
-                    <i class="fa-solid fa-sparkles"></i>
-                    <h3>Creativity</h3>
-                    <p>Break through "blank page syndrome" with thousands of lesson hooks and project ideas.</p>
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h3>Collaborative Canvas</h3>
+                    <p>Edit, refine, and co-write directly with Gemini in a side-by-side workspace.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: Toolkit -->
+        <section id="toolkit" class="page-section">
+            <h2>🍌 The Gemini Toolkit</h2>
+            <p>Advanced search and synthesis modes that go beyond typical conversational responses.</p>
+            
+            <div class="grid-container">
+                <div class="card">
+                    <div class="tool-badge">Creation Mode</div>
+                    <h3>🍌 Nano Banana</h3>
+                    <p>Turns prompts into studio-quality designs. Create infographics, worksheets, and cartoons with legible text and consistent characters across up to 14 blended images.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/cP7ph9p_QQE" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Intro</a>
+                        <a href="https://youtu.be/kKFghakrvs8" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Design</a>
+                        <a href="https://youtu.be/55J9sMbrZPA" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Image Edit</a>
+                        <a href="https://youtu.be/Fpnfz97HDYO" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Infographics</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="tool-badge">Analysis Mode</div>
+                    <h3>🔍 Deep Research</h3>
+                    <p>Autonomously browses the live web to build a comprehensive, structured report with citations. Ideal for factual accuracy and diverse perspectives on local case studies.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/-PdpDzs9vXU" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> How to Use</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="tool-badge">Study Mode</div>
+                    <h3>🎓 Guided Learning</h3>
+                    <p>Helps study and learn by building understanding instead of just giving answers. Features step-by-step breakdowns, probing questions, and interactive quizzes.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/Q-RnMvPKmU8" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Guided Learning</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="tool-badge">Workspace Mode</div>
+                    <h3>🎨 Gemini Canvas</h3>
+                    <p>An interactive, side-by-side workspace for collaborative content creation. Highlight text for targeted AI revisions or generate functional web app prototypes.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/NLEqtmp6rgg" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Intro to Canvas</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="tool-badge">Classroom Integration</div>
+                    <h3>🏫 Gemini in Classroom</h3>
+                    <p>Streamline administrative tasks directly in Classroom. Generate rubrics, leveled reading, and "Audio Lessons" (podcast-style summaries) instantly.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/a47WtXgW86k" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Assistant Workflow</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -339,45 +523,44 @@
         <!-- SECTION: Prompting -->
         <section id="prompting" class="page-section">
             <h2>The Art of the Prompt</h2>
-            <p>To get the best from Gemini, don't just ask a question. Give it a <strong>Persona</strong> and <strong>Context</strong>.</p>
+            <p>Use these SQA-aligned examples to get higher quality results from Deep Research and Canvas.</p>
             
-            <div class="card" style="margin-top: 24px; border-left: 6px solid var(--gemini-blue);">
-                <h3 style="color: var(--gemini-blue);">The 4-Step Framework</h3>
-                <ul style="list-style: none; line-height: 2;">
-                    <li><strong>1. Persona:</strong> "Act as an expert Primary 6 teacher in Scotland..."</li>
-                    <li><strong>2. Task:</strong> "Design a 45-minute lesson plan about renewable energy..."</li>
-                    <li><strong>3. Context:</strong> "The class has varying abilities and we have access to 10 iPads..."</li>
-                    <li><strong>4. Format:</strong> "Provide the output as a structured table with clear learning intentions."</li>
-                </ul>
+            <div class="card" style="margin-top: 24px; border-left: 6px solid var(--gemini-purple);">
+                <div class="tool-badge">BGE Example (S1-S3)</div>
+                <h3 style="color: var(--gemini-purple);">WW1 Trench Experience</h3>
+                <p style="font-size: 14px; margin-bottom: 12px;">Focus: Empathy and Sensory Experience for Scottish Regiments (e.g., Black Watch).</p>
+                <div class="toolkit-prompt" onclick="copyPrompt(this)">
+                    <span class="copy-hint">Copy</span>
+                    "Act as a historical researcher. Conduct a Deep Research project into the daily life of a Scottish soldier in the trenches of the Western Front during 1915. Your report must include the sensory experience (sounds/smells), kit rations for the Black Watch, and primary snippets of letters sent home. Format as a 'Fact File' for a student diary entry."
+                </div>
             </div>
 
-            <h3 style="margin-top: 40px;">Try This Prompt:</h3>
-            <div class="example-box">
-                <div class="example-tag">Copy & Paste</div>
-                "Act as a secondary school history teacher. I need to explain the causes of World War I to a group of 14-year-olds. Can you give me 5 creative analogies that link the causes of the war to modern-day social situations that students would understand?"
+            <div class="card" style="margin-top: 24px; border-left: 6px solid var(--gemini-blue);">
+                <div class="tool-badge">Senior Phase (Nat 5 / Higher)</div>
+                <h3 style="color: var(--gemini-blue);">Origins of WW1 Historiography</h3>
+                <p style="font-size: 14px; margin-bottom: 12px;">Focus: Fischer Thesis, Source Analysis, and Industrial Impact on the Scottish Central Belt.</p>
+                <div class="toolkit-prompt" onclick="copyPrompt(this)">
+                    <span class="copy-hint">Copy</span>
+                    "Conduct an academic Deep Research inquiry into the historiography of the origins of World War I, specifically focusing on the 'Fischer Thesis'. Analyze the debate between 'German Guilt' vs shared responsibility. Investigate the economic impact on the industrial Central Belt of Scotland. Provide a structured essay outline with academic citations."
+                </div>
             </div>
         </section>
 
         <!-- SECTION: Examples -->
         <section id="examples" class="page-section">
-            <h2>Classroom Examples</h2>
-            <p>Click a category to see how Gemini can transform your workflow.</p>
-            
+            <h2>Subject-Specific Prompts</h2>
             <div class="grid-container">
                 <div class="card">
-                    <h3>Literacy & Language</h3>
-                    <p>Generate reading comprehension questions based on any URL or pasted text.</p>
-                    <button class="btn-outline" style="margin-top: 10px;" onclick="alert('Try: Create 5 inferential questions for this news article for a Level 2 learner.')">See Prompt</button>
+                    <h3>Literacy & Creative</h3>
+                    <p><strong>Prompt:</strong> "Act as a playwright. Create a 3-act script outline based on 'The Kelpies' of Falkirk for a P5 drama lesson. Include stage directions."</p>
                 </div>
                 <div class="card">
                     <h3>STEM & Coding</h3>
-                    <p>Explain complex math concepts using real-world sports data or local landmarks.</p>
-                    <button class="btn-outline" style="margin-top: 10px;" onclick="alert('Try: Explain the concept of parabolas using a basketball shot as an example.')">See Prompt</button>
+                    <p><strong>Prompt:</strong> "Act as a Python expert. Write a script that calculates the speed of a Red Bull F1 car over 5 laps, explaining each line with comments."</p>
                 </div>
                 <div class="card">
-                    <h3>Admin & Pastoral</h3>
-                    <p>Summarize long parent-teacher meeting notes into actionable bullet points.</p>
-                    <button class="btn-outline" style="margin-top: 10px;" onclick="alert('Try: Summarize these meeting notes into a professional email for the parents, highlighting 3 clear next steps.')">See Prompt</button>
+                    <h3>Music & Arts</h3>
+                    <p><strong>Prompt:</strong> "Describe a 40-second cinematic soundtrack for a story about a dragon under a Highland Munro. Suggest instruments for a mysterious mood."</p>
                 </div>
             </div>
         </section>
@@ -387,58 +570,35 @@
             <div class="hero-banner" style="background: #fce8e6; border: 1px solid #fad2cf;">
                 <div class="hero-text">
                     <h2 style="color: #c5221f;">Safety First</h2>
-                    <p style="color: #202124;">When using Gemini Education, your data is protected. Google does not use your conversations to train its public models.</p>
+                    <p style="color: #202124;">When using Gemini Education via Glow, your data is protected. Conversations are not used to train public models.</p>
                 </div>
             </div>
-            
             <div class="grid-container">
-                <div class="card">
-                    <i class="fa-solid fa-user-secret" style="color: #c5221f;"></i>
-                    <h3>Anonymize Data</h3>
-                    <p>Never enter student names, birthdays, or sensitive identification numbers into any AI tool.</p>
-                </div>
-                <div class="card">
-                    <i class="fa-solid fa-magnifying-glass" style="color: #c5221f;"></i>
-                    <h3>Fact Check</h3>
-                    <p>AI can "hallucinate." Always verify dates, complex math, or obscure historical facts before using them in class.</p>
-                </div>
+                <div class="card"><i class="fa-solid fa-user-secret" style="color: #c5221f;"></i><h3>Anonymize</h3><p>Never enter student names or sensitive identifiers into AI tools.</p></div>
+                <div class="card"><i class="fa-solid fa-magnifying-glass" style="color: #c5221f;"></i><h3>Fact Check</h3><p>Always verify dates and complex facts produced by AI before classroom use.</p></div>
             </div>
         </section>
 
         <!-- SECTION: Cheat Sheet -->
         <section id="cheatsheet" class="page-section">
             <h2>Infographic Cheat Sheet</h2>
-            <p>Select the areas you are most interested in, and we'll generate a personalized "Cheat Sheet" for you to save or print.</p>
-            
             <div class="generator-container">
-                <h3>1. Select your interests:</h3>
+                <h3>Select your interests:</h3>
                 <div class="feature-selector" id="chip-container">
                     <div class="chip" data-val="lesson">Lesson Planning</div>
-                    <div class="chip" data-val="admin">Admin Tasks</div>
-                    <div class="chip" data-val="diff">Differentiation</div>
-                    <div class="chip" data-val="pastoral">Pastoral Support</div>
-                    <div class="chip" data-val="prompt">Prompt Engineering</div>
+                    <div class="chip" data-val="toolkit">Advanced Toolkit</div>
+                    <div class="chip" data-val="guided">Guided Learning</div>
+                    <div class="chip" data-val="prompt">SQA Prompts</div>
                     <div class="chip" data-val="privacy">Privacy Rules</div>
                 </div>
                 <button class="btn-primary" onclick="generateInfographic()">Generate My Cheat Sheet</button>
             </div>
-
             <div id="infographic-preview">
                 <div style="display: flex; justify-content: space-between; align-items: start; border-bottom: 2px solid var(--gemini-blue); padding-bottom: 20px; margin-bottom: 30px;">
-                    <div>
-                        <h1 style="color: var(--gemini-blue); font-family: 'Google Sans';">Gemini for Educators</h1>
-                        <p style="color: var(--text-light);">Personalized Quick-Start Guide</p>
-                    </div>
-                    <button class="btn-outline" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / Save PDF</button>
+                    <div><h1 style="color: var(--gemini-blue); font-family: 'Google Sans';">Gemini for Educators</h1><p style="color: var(--text-light);">Scottish Quick-Start Guide</p></div>
+                    <button class="btn-outline" onclick="window.print()"><i class="fa-solid fa-print"></i> Print PDF</button>
                 </div>
-                
-                <div id="dynamic-content-area" class="grid-container">
-                    <!-- Populated by JS -->
-                </div>
-
-                <div style="margin-top: 40px; padding: 20px; background: var(--gemini-light-bg); border-radius: 8px; font-size: 13px;">
-                    <strong>Remember:</strong> AI is a co-pilot, not an autopilot. Always review content for accuracy and curriculum alignment.
-                </div>
+                <div id="dynamic-content-area" class="grid-container"></div>
             </div>
         </section>
 
@@ -446,25 +606,37 @@
 
     <script>
         function showSection(sectionId) {
-            // Update Navigation
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.classList.remove('active');
                 if (item.innerText.toLowerCase().includes(sectionId.substring(0,3))) {
                     item.classList.add('active');
                 }
             });
-
-            // Update Section visibility
             document.querySelectorAll('.page-section').forEach(section => {
                 section.classList.remove('active');
             });
             document.getElementById(sectionId).classList.add('active');
-            
-            // Scroll to top
             document.getElementById('main-content').scrollTop = 0;
         }
 
-        // Chip selection logic
+        function copyPrompt(element) {
+            const text = element.innerText.replace('Copy', '').trim();
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            const hint = element.querySelector('.copy-hint');
+            hint.innerText = 'Copied!';
+            hint.style.color = '#34A853';
+            setTimeout(() => {
+                hint.innerText = 'Copy';
+                hint.style.color = 'var(--text-light)';
+            }, 2000);
+        }
+
         document.querySelectorAll('.chip').forEach(chip => {
             chip.onclick = function() {
                 this.classList.toggle('selected');
@@ -472,64 +644,30 @@
         });
 
         const contentLibrary = {
-            lesson: {
-                title: "Lesson Planning",
-                text: "Ask Gemini for: 'A list of 5 active learning hooks for a lesson on the Jacobite Risings for P7 students.'",
-                icon: "fa-book"
-            },
-            admin: {
-                title: "Efficiency & Admin",
-                text: "Drafting: 'Write a professional email to a colleague requesting a classroom observation time next Tuesday.'",
-                icon: "fa-envelope"
-            },
-            diff: {
-                title: "Differentiation",
-                text: "Scaling: 'Rewrite this paragraph about photosynthesis for a student with a reading age of 8.'",
-                icon: "fa-layer-group"
-            },
-            pastoral: {
-                title: "Pastoral Support",
-                text: "Summarization: 'Turn these student check-in notes into a concise update for the Year Head.'",
-                icon: "fa-heart"
-            },
-            prompt: {
-                title: "Prompt Framework",
-                text: "Remember: Persona + Task + Context + Format. It's the 'Golden Rule' for AI success.",
-                icon: "fa-terminal"
-            },
-            privacy: {
-                title: "Privacy Essentials",
-                text: "Never use real names. Keep data anonymous. Verify all AI-generated facts before sharing.",
-                icon: "fa-shield"
-            }
+            lesson: { title: "Lesson Planning", text: "Try: '5 active learning hooks for a lesson on the Jacobite Risings for P7.'", icon: "fa-book" },
+            toolkit: { title: "Advanced Toolkit", text: "Nano Banana (2.5 Flash) for speed. Deep Research for live web browsing with citations.", icon: "fa-toolbox" },
+            guided: { title: "Guided Learning", text: "Use probing questions and interactive quizzes to build deep student understanding.", icon: "fa-user-graduate" },
+            prompt: { title: "SQA Framework", text: "Senior Phase: Use Deep Research to analyze historiography and Industrial Central Belt impacts.", icon: "fa-terminal" },
+            privacy: { title: "Privacy Essentials", text: "Never use real names. Anonymize data and verify all AI-generated facts.", icon: "fa-shield" }
         };
 
         function generateInfographic() {
             const selectedChips = document.querySelectorAll('.chip.selected');
             if (selectedChips.length === 0) {
-                alert("Please select at least one feature to include in your cheat sheet!");
+                alert("Please select at least one feature!");
                 return;
             }
-
             const previewArea = document.getElementById('infographic-preview');
             const contentArea = document.getElementById('dynamic-content-area');
             contentArea.innerHTML = '';
-
             selectedChips.forEach(chip => {
-                const key = chip.getAttribute('data-val');
-                const data = contentLibrary[key];
-                
+                const data = contentLibrary[chip.getAttribute('data-val')];
                 const card = document.createElement('div');
                 card.className = 'card';
                 card.style.border = "1px solid #e8f0fe";
-                card.innerHTML = `
-                    <i class="fa-solid ${data.icon}"></i>
-                    <h3>${data.title}</h3>
-                    <p style="font-size: 14px;">${data.text}</p>
-                `;
+                card.innerHTML = `<i class="fa-solid ${data.icon}"></i><h3>${data.title}</h3><p style="font-size: 14px;">${data.text}</p>`;
                 contentArea.appendChild(card);
             });
-
             previewArea.style.display = 'block';
             previewArea.scrollIntoView({ behavior: 'smooth' });
         }
