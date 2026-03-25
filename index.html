@@ -354,6 +354,11 @@
             display: block;
             margin-bottom: 8px;
         }
+        .parts-desc {
+            font-size: 11px;
+            color: var(--text-light);
+            line-height: 1.3;
+        }
 
         /* Cheat Sheet Generator */
         .generator-container {
@@ -585,17 +590,18 @@
                 <div class="card">
                     <div class="tool-badge">Creation Mode</div>
                     <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Nano Banana Pro</h3>
-                    <p>Generates high-quality visual assets and infographics. Features advanced text rendering and character consistency across images.</p>
+                    <p>Generates studio-quality visual assets and infographics. Features advanced text rendering in multiple languages and character consistency across up to 14 images.</p>
                     <div class="video-btn-group">
                         <a href="https://youtu.be/cP7ph9p_QQE" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Intro</a>
                         <a href="https://youtu.be/kKFghakrvs8" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Control</a>
+                        <a href="https://youtu.be/55J9sMbrZPA" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Image Edit</a>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="tool-badge">Analysis Mode</div>
                     <h3><i class="fa-solid fa-microscope"></i> Deep Research</h3>
-                    <p>An autonomous research agent that builds a multi-step plan in real-time. Browses the live web to create structured reports with citations.</p>
+                    <p>An autonomous research agent that builds a multi-step plan in real-time. Browses the live web to create structured reports with citations. Best for factual accuracy.</p>
                     <div class="video-btn-group">
                         <a href="https://youtu.be/-PdpDzs9vXU" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Deep Dive</a>
                     </div>
@@ -604,7 +610,7 @@
                 <div class="card">
                     <div class="tool-badge">Study Mode</div>
                     <h3><i class="fa-solid fa-graduation-cap"></i> Guided Learning</h3>
-                    <p>Helps you study by building understanding instead of just giving answers. Features step-by-step breakdowns and probing questions.</p>
+                    <p>Socratic tutor mode. Uses step-by-step breakdowns, probing questions, and interactive quizzes to build understanding rather than just giving answers.</p>
                     <div class="video-btn-group">
                         <a href="https://youtu.be/Q-RnMvPKmU8" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Tutor Mode</a>
                     </div>
@@ -613,9 +619,27 @@
                 <div class="card">
                     <div class="tool-badge">Workspace Mode</div>
                     <h3><i class="fa-solid fa-window-restore"></i> Gemini Canvas</h3>
-                    <p>An interactive, side-by-side workspace for collaborative creation. Highlight text for targeted AI revisions.</p>
+                    <p>Interactive, side-by-side workspace. Highlight text for targeted AI revisions (tone/length) or use the coding toggle to generate web app prototypes.</p>
                     <div class="video-btn-group">
                         <a href="https://youtu.be/NLEqtmp6rgg" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Canvas Intro</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="tool-badge">Integration</div>
+                    <h3><i class="fa-solid fa-chalkboard-user"></i> Gemini in Classroom</h3>
+                    <p>Streamline administrative tasks. Generate rubrics, leveled reading, and podcast-style "Audio Lessons" instantly from your course materials.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/a47WtXgW86k" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Workflow</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="tool-badge">Personalization</div>
+                    <h3><i class="fa-solid fa-gem"></i> Gems</h3>
+                    <p>Your custom-built AI assistants. Persistently specialized to remember your preferred lesson structure, CfE benchmarks, or specific student needs.</p>
+                    <div class="video-btn-group">
+                        <a href="https://youtu.be/bshECUJ7GE4" target="_blank" class="yt-btn"><i class="fa-brands fa-youtube"></i> Custom Gems</a>
                     </div>
                 </div>
             </div>
@@ -628,33 +652,59 @@
 
             <div class="parts-container">
                 <h3 style="color: var(--gemini-blue); margin-bottom: 20px; font-weight: 500;">The P.A.R.T.S. Framework</h3>
+                <p style="font-size: 14px; color: var(--text-light); margin-bottom: 24px;">Build better prompts by including these five key elements. Use this checklist for every complex request.</p>
                 <div class="parts-grid">
                     <div class="parts-item">
                         <span class="parts-letter">P</span>
                         <span class="parts-label">Persona</span>
+                        <span class="parts-desc">Give Gemini a professional identity.<br><em>"Act as a SQA examiner..."</em></span>
                     </div>
                     <div class="parts-item">
                         <span class="parts-letter">A</span>
                         <span class="parts-label">Audience</span>
+                        <span class="parts-desc">Who is the content for?<br><em>"For a class of S2 pupils..."</em></span>
                     </div>
                     <div class="parts-item">
                         <span class="parts-letter">R</span>
                         <span class="parts-label">Role/Task</span>
+                        <span class="parts-desc">What is the core instruction?<br><em>"Draft a 3-part lesson plan..."</em></span>
                     </div>
                     <div class="parts-item">
                         <span class="parts-letter">T</span>
                         <span class="parts-label">Tone</span>
+                        <span class="parts-desc">How should it sound?<br><em>"Encouraging and accessible..."</em></span>
                     </div>
                     <div class="parts-item">
                         <span class="parts-letter">S</span>
                         <span class="parts-label">Specifics</span>
+                        <span class="parts-desc">List constraints/requirements.<br><em>"Include CfE benchmarks..."</em></span>
                     </div>
                 </div>
                 <div style="background: white; border-radius: 8px; padding: 16px; border: 1px solid #eee;">
                     <div class="toolkit-prompt" onclick="copyPrompt(this)" style="margin-top: 0; font-size: 12px;">
                         <span class="copy-hint">Copy</span>
-                        "Act as an expert Primary Science teacher. Design a 40-minute experiment on water density for a P5 class. Use clear, step-by-step language. Must align with CfE benchmark SCN 2-05a."
+                        "<strong>(P)</strong> Act as an expert Primary Science teacher. <strong>(R)</strong> Design a 40-minute experiment on water density <strong>(A)</strong> for a P5 class. <strong>(T)</strong> Use clear, step-by-step language. <strong>(S)</strong> Must align with CfE benchmark SCN 2-05a and include household items."
                     </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 24px; border-left: 6px solid var(--gemini-purple);">
+                <div class="tool-badge">BGE Level (S1-S3)</div>
+                <h3 style="color: var(--gemini-purple);">The Trench Experience</h3>
+                <p style="font-size: 14px; margin-bottom: 12px; color: var(--text-light);">Focus: Sensory immersion for Scottish Regiments (e.g., The Black Watch).</p>
+                <div class="toolkit-prompt" onclick="copyPrompt(this)">
+                    <span class="copy-hint">Copy</span>
+                    "Act as a historical researcher. Conduct a Deep Research project into the daily life of a Scottish soldier in the trenches of the Western Front during 1915. Your report must include: The Sensory Experience, Equipment & Rations (standard kit for the Black Watch), and Primary Accounts. Output: Format as a 'Fact File' for a student diary entry."
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 24px; border-left: 6px solid var(--gemini-blue);">
+                <div class="tool-badge">Senior Phase (Higher)</div>
+                <h3 style="color: var(--gemini-blue);">Historiography Inquiry</h3>
+                <p style="font-size: 14px; margin-bottom: 12px; color: var(--text-light);">Focus: The Fischer Thesis and the industrial impact on the Central Belt.</p>
+                <div class="toolkit-prompt" onclick="copyPrompt(this)">
+                    <span class="copy-hint">Copy</span>
+                    "Conduct an academic Deep Research inquiry into the historiography of WWI origins, specifically the 'Fischer Thesis.' Research the economic impact on the 'Workshop of the World' (Scottish Central Belt). Output: Provide a structured essay outline with 5 academic citations and a counter-argument section."
                 </div>
             </div>
         </section>
@@ -664,13 +714,14 @@
             <div class="hero-banner" style="background: linear-gradient(135deg, #f5f0ff 0%, #e8f0fe 100%); border: 1px solid #e0d0ff;">
                 <div class="hero-text">
                     <h2>✨ The AI Lab</h2>
-                    <p>Experience the power of LLMs directly in your browser. Generate Scottish curriculum materials instantly.</p>
+                    <p>Experience the power of LLMs directly in your browser. Generate Scottish curriculum materials and optimize your teaching prompts instantly.</p>
                 </div>
             </div>
 
             <div class="grid-container">
                 <div class="card ai-tool-card">
                     <h4>✨ PARTS Prompt Optimizer</h4>
+                    <p style="font-size: 13px; margin-bottom: 12px; color: var(--text-light);">Paste a simple prompt and the AI will rewrite it using the full P.A.R.T.S. framework for better results.</p>
                     <textarea id="parts-input" class="ai-input" placeholder="Enter your simple prompt idea here..."></textarea>
                     <button class="btn-primary magic-btn" onclick="runAiTask('parts')">
                         <span class="loading-spinner" id="parts-loader"></span>
@@ -678,14 +729,38 @@
                     </button>
                     <div id="parts-output" class="ai-output"></div>
                 </div>
+
+                <div class="card ai-tool-card">
+                    <h4>✨ Nano Banana Prompt Pro</h4>
+                    <p style="font-size: 13px; margin-bottom: 12px; color: var(--text-light);">Turn concepts into studio-quality image prompts focusing on lighting, style, and composition.</p>
+                    <textarea id="image-input" class="ai-input" placeholder="Describe the image you want (e.g., 'A classroom in outer space')"></textarea>
+                    <button class="btn-primary magic-btn" onclick="runAiTask('image')">
+                        <span class="loading-spinner" id="image-loader"></span>
+                        <span id="image-btn-text">✨ Optimize Image Prompt</span>
+                    </button>
+                    <div id="image-output" class="ai-output"></div>
+                </div>
+
                 <div class="card ai-tool-card">
                     <h4>✨ CfE Active Learning Hooks</h4>
-                    <input type="text" id="hook-topic" class="ai-input" placeholder="Enter topic (e.g., Romans, Solar System)">
+                    <p style="font-size: 13px; margin-bottom: 12px; color: var(--text-light);">Enter a topic to generate 3 high-engagement lesson openers aligned to Scottish CfE levels.</p>
+                    <input type="text" id="hook-topic" class="ai-input" placeholder="Enter topic (e.g., Romans, Sustainable energy)">
                     <button class="btn-primary magic-btn" onclick="runAiTask('hook')">
                         <span class="loading-spinner" id="hook-loader"></span>
                         <span id="hook-btn-text">✨ Generate Hooks</span>
                     </button>
                     <div id="hook-output" class="ai-output"></div>
+                </div>
+
+                <div class="card ai-tool-card">
+                    <h4>✨ SQA Study Guide Drafter</h4>
+                    <p style="font-size: 13px; margin-bottom: 12px; color: var(--text-light);">Enter a complex National 5 or Higher topic to generate a structured analysis guide with key facts.</p>
+                    <input type="text" id="sqa-topic" class="ai-input" placeholder="Topic (e.g. Origins of WWI, Osmosis)">
+                    <button class="btn-primary magic-btn" onclick="runAiTask('sqa')">
+                        <span class="loading-spinner" id="sqa-loader"></span>
+                        <span id="sqa-btn-text">✨ Draft Study Guide</span>
+                    </button>
+                    <div id="sqa-output" class="ai-output"></div>
                 </div>
             </div>
         </section>
@@ -696,11 +771,27 @@
             <div class="grid-container">
                 <div class="card">
                     <h3><i class="fa-solid fa-code" style="color: #4285F4;"></i> STEM & Coding</h3>
-                    <p>Using F1 as a hook for Python programming.</p>
+                    <p style="margin-bottom: 15px;">Using F1 as a hook for Python programming.</p>
+                    <div class="toolkit-prompt" onclick="copyPrompt(this)" style="font-size: 12px; border-left-color: #4285F4;">
+                        <span class="copy-hint">Copy</span>
+                        "Act as a Python expert. Write a script that simulates a Red Bull Racing F1 car's lap times over a 50-lap race at Silverstone. Include variables for tyre wear and fuel load. Comment on every line to explain the logic to a beginner student."
+                    </div>
                 </div>
                 <div class="card">
                     <h3><i class="fa-solid fa-masks-theater" style="color: #EA4335;"></i> Drama & Literacy</h3>
-                    <p>Local mythology meets creative writing.</p>
+                    <p style="margin-bottom: 15px;">Local mythology meets creative writing.</p>
+                    <div class="toolkit-prompt" onclick="copyPrompt(this)" style="font-size: 12px; border-left-color: #EA4335;">
+                        <span class="copy-hint">Copy</span>
+                        "Create a script outline for a 10-minute P6 drama performance based on the legend of 'The Kelpies' in Falkirk. Include three distinct scenes, character descriptions, and stage directions that emphasize a magical atmosphere."
+                    </div>
+                </div>
+                <div class="card">
+                    <h3><i class="fa-solid fa-music" style="color: #FBBC05;"></i> Music & Media</h3>
+                    <p style="margin-bottom: 15px;">Atmospheric soundscape creation.</p>
+                    <div class="toolkit-prompt" onclick="copyPrompt(this)" style="font-size: 12px; border-left-color: #FBBC05;">
+                        <span class="copy-hint">Copy</span>
+                        "Describe a 60-second cinematic musical score for a short film about a trek up a Highland Munro. Suggest specific instruments, tempo changes, and 'mood words' that transition from a misty morning to a clear summit view."
+                    </div>
                 </div>
             </div>
         </section>
@@ -713,20 +804,52 @@
                     <p>Data protection is non-negotiable. When using Gemini through Glow, your data stays within the secure enterprise environment.</p>
                 </div>
             </div>
+            <div class="grid-container">
+                <div class="card">
+                    <i class="fa-solid fa-user-secret" style="color: #c5221f; font-size: 28px; margin-bottom: 15px;"></i>
+                    <h3>Anonymize Everything</h3>
+                    <p>Never enter student names, Scottish Candidate Numbers (SCN), or sensitive personal details. Use generic descriptors like 'Student A' or 'P7 Group'.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-check-double" style="color: var(--gemini-blue); font-size: 28px; margin-bottom: 15px;"></i>
+                    <h3>The 'Human in the Loop'</h3>
+                    <p>AI can hallucinate. Always fact-check dates, equations, and local policy references before sharing materials with learners or colleagues.</p>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-lock" style="color: #34A853; font-size: 28px; margin-bottom: 15px;"></i>
+                    <h3>Glow Security</h3>
+                    <p>Using your official Glow account ensures that your conversation data is not used to train public AI models. You own your prompts.</p>
+                </div>
+            </div>
         </section>
 
         <!-- SECTION: Cheat Sheet -->
         <section id="cheatsheet" class="page-section">
             <h2>Custom Cheat Sheet Generator</h2>
             <div class="generator-container">
+                <h3 style="font-family: 'Google Sans Flex', sans-serif; font-size: 16px; margin-bottom: 16px; font-weight: 500;">Step 1: Select Pedagogical Guides</h3>
                 <div class="feature-selector">
                     <div class="chip" data-val="curriculum">CfE Planning</div>
-                    <div class="chip" data-val="prompts">Master Prompts</div>
-                    <div class="chip" data-val="research">Deep Research</div>
+                    <div class="chip" data-val="prompts">Master Prompts (PARTS)</div>
+                    <div class="chip" data-val="privacy">Privacy & Safety</div>
+                    <div class="chip" data-val="stem">STEM Hooks (F1)</div>
+                    <div class="chip" data-val="gems">Custom Gems</div>
                 </div>
-                <button class="btn-primary" onclick="generateInfographic()">
-                    <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Custom Cheat Sheet
-                </button>
+
+                <h3 style="font-family: 'Google Sans Flex', sans-serif; font-size: 16px; margin-top: 24px; margin-bottom: 16px; font-weight: 500;">Step 2: Select Tool Callouts</h3>
+                <div class="feature-selector">
+                    <div class="chip" data-val="research">Deep Research</div>
+                    <div class="chip" data-val="design">Nano Banana Pro</div>
+                    <div class="chip" data-val="canvas">Gemini Canvas</div>
+                    <div class="chip" data-val="tutor">Guided Learning</div>
+                    <div class="chip" data-val="classroom">Classroom Assistant</div>
+                </div>
+
+                <div style="margin-top: 32px;">
+                    <button class="btn-primary" onclick="generateInfographic()">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Custom Cheat Sheet
+                    </button>
+                </div>
             </div>
             <div id="infographic-preview">
                 <div id="dynamic-content-area" class="grid-container"></div>
@@ -740,16 +863,17 @@
         <div class="footer-grid">
             <div class="footer-col">
                 <h4>Digital Learning via Glow</h4>
-                <p style="font-size: 14px; color: var(--text-light); line-height: 1.6;">Supporting teachers across Scotland in mastering AI.</p>
+                <p style="font-size: 14px; color: var(--text-light); line-height: 1.6;">Supporting teachers across Scotland in mastering AI. Official Interactive Resource.</p>
             </div>
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <a href="https://glow.rmunify.com" target="_blank" class="external-link"><i class="fa-solid fa-graduation-cap"></i> Launch Glow</a>
+                <a href="https://educertifications.google" target="_blank" class="external-link"><i class="fa-solid fa-certificate"></i> Certification Portal</a>
             </div>
         </div>
         <div class="branding-footer">
             <strong>Digital Learning & Teaching via Glow</strong><br>
-            Official Interactive Resource for Scottish Educators
+            Training Resource v2.8 • Optimized for Scottish Educators
         </div>
     </footer>
 
@@ -807,11 +931,18 @@
                         const result = await response.json();
                         return result.candidates?.[0]?.content?.parts?.[0]?.text;
                     }
-                } catch (e) {}
+                    if (response.status === 403 || response.status === 400) {
+                        const errData = await response.json();
+                        if (errData.error?.message?.includes("identity")) {
+                            throw new Error("Missing API Key credentials.");
+                        }
+                    }
+                } catch (e) {
+                    if (i === 4) throw e;
+                }
                 await new Promise(r => setTimeout(r, delay));
                 delay *= 2;
             }
-            throw new Error("Unable to reach Gemini. Check your connection or API configuration.");
         }
 
         async function runAiTask(type) {
@@ -827,12 +958,22 @@
                 const input = document.getElementById('parts-input').value;
                 if (!input) return;
                 prompt = input;
-                systemPrompt = "Rewrite this prompt using the P.A.R.T.S. framework for a Scottish teacher.";
+                systemPrompt = "Act as an expert Scottish EdTech coach. Take the user's prompt and rewrite it using the P.A.R.T.S. framework (Persona, Audience, Role, Tone, Specifics). Format with a short explanation.";
+            } else if (type === 'image') {
+                const input = document.getElementById('image-input').value;
+                if (!input) return;
+                prompt = input;
+                systemPrompt = "You are a prompt engineering specialist for Google's Nano Banana Pro. Transform the user's concept into a rich, detailed prompt including lighting, style, and composition details.";
             } else if (type === 'hook') {
                 const topic = document.getElementById('hook-topic').value;
                 if (!topic) return;
                 prompt = topic;
-                systemPrompt = "Generate 3 active learning hooks for this topic for a Scottish classroom.";
+                systemPrompt = "Generate 3 unique 'Active Learning' hooks for a Scottish classroom at a BGE level. Focus on engagement and low-cost impact.";
+            } else if (type === 'sqa') {
+                const topic = document.getElementById('sqa-topic').value;
+                if (!topic) return;
+                prompt = topic;
+                systemPrompt = "You are an SQA expert. Create a structured study guide for this topic including Key Facts and Analysis/Evaluation pointers aligned to SQA standards.";
             }
 
             btn.disabled = true;
@@ -845,7 +986,7 @@
                 output.innerText = result;
                 output.style.display = "block";
             } catch (error) {
-                output.innerText = error.message;
+                output.innerHTML = `<span style="color: #c5221f;"><strong>Error:</strong> ${error.message}</span>`;
                 output.style.display = "block";
             } finally {
                 btn.disabled = false;
@@ -872,9 +1013,16 @@
         });
 
         const contentLibrary = {
-            curriculum: { title: "CfE Planning", text: "IDL focus prompts for Scottish teachers.", icon: "fa-book-open" },
-            prompts: { title: "Mastering Prompts", text: "Using P.A.R.T.S. for better results.", icon: "fa-terminal" },
-            research: { title: "Deep Research", text: "Cited academic reports.", icon: "fa-microscope" }
+            curriculum: { title: "CfE Planning", text: "Focus on Active Learning and IDL. Use prompts for P7 Jacobite Risings or S1 Science hooks.", icon: "fa-book-open" },
+            prompts: { title: "Mastering Prompts", text: "Use the P.A.R.T.S. Framework: Persona, Audience, Role, Tone, Specifics for SQA-aligned materials.", icon: "fa-terminal" },
+            privacy: { title: "Privacy Essentials", text: "Anonymize student data. Ensure you are signed in via Glow to protect conversation data.", icon: "fa-shield-halved" },
+            stem: { title: "STEM & Coding", text: "Engage learners with Red Bull F1 Red Bull Python scripts or BBC Micro:bit telemetry guides.", icon: "fa-rocket" },
+            gems: { title: "Custom Gems", text: "Create persistent AI assistants for UCAS drafting, differentiated literacy, or CfE lesson planning.", icon: "fa-gem" },
+            research: { title: "Deep Research", text: "Autonomous browsing that builds multi-step plans for academic reports with verified citations.", icon: "fa-microscope" },
+            design: { title: "Nano Banana Pro", text: "Studio-quality visual assets with advanced text rendering and consistent characters across images.", icon: "fa-wand-magic-sparkles" },
+            canvas: { title: "Gemini Canvas", text: "Collaborative workspace for targeted revisions or generating functional web app prototypes.", icon: "fa-window-restore" },
+            tutor: { title: "Guided Learning", text: "Socratic mode using probing questions to build student understanding rather than just giving answers.", icon: "fa-user-graduate" },
+            classroom: { title: "Classroom Assistant", text: "Generate rubrics, leveled reading, and Audio Lessons directly within Google Classroom.", icon: "fa-chalkboard-user" }
         };
 
         function generateInfographic() {
@@ -887,10 +1035,12 @@
                 const data = contentLibrary[chip.getAttribute('data-val')];
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.innerHTML = `<i class="fa-solid ${data.icon}"></i><h3>${data.title}</h3><p>${data.text}</p>`;
+                card.style.border = "1px solid #e8f0fe";
+                card.innerHTML = `<i class="fa-solid ${data.icon}" style="font-size:24px; color:var(--gemini-blue); margin-bottom:10px;"></i><h3>${data.title}</h3><p style="font-size:14px;">${data.text}</p>`;
                 contentArea.appendChild(card);
             });
             previewArea.style.display = 'block';
+            previewArea.scrollIntoView({ behavior: 'smooth' });
         }
     </script>
 </body>
